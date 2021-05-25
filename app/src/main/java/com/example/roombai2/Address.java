@@ -1,19 +1,29 @@
 package com.example.roombai2;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class Place {
+import java.io.Serializable;
+
+@Entity(tableName = "Address")
+public class Address implements Serializable {
+
     @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(name = "name")
     private String name;
 
-    public Place() {
+    public Address() {
     }
 
-    public Place(int id, String name) {
+    public Address(int id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public Address(String name) {
         this.name = name;
     }
 
@@ -35,7 +45,7 @@ public class Place {
 
     @Override
     public String toString() {
-        return "Place{" +
+        return "Address{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
